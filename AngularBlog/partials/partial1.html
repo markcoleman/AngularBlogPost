@@ -1,0 +1,7 @@
+<p>This is the partial for view 1.</p>
+<ul data-ng-repeat="account in CheckingAccounts">
+    <li>
+        {{account.Description}} - {{account.Balance}}
+        <a href="#/checkingaccounts/{{account.id}}">test</a>
+    </li>
+</ul>
