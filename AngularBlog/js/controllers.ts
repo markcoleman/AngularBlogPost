@@ -5,10 +5,20 @@
 
 interface ICheckingAccountControllerScope extends ng.IScope {
     CheckingAccounts: CheckingAccount[];
+    sum: Function;
 }
 
-function MyCtrl1($scope : ICheckingAccountControllerScope, CheckingAccount: ng.resource.IResourceClass) {
+function MyCtrl1($scope: ICheckingAccountControllerScope, CheckingAccount: ng.resource.IResourceClass) {
     $scope.CheckingAccounts = <any>CheckingAccount.query();
+
+    $scope.sum = function () {
+        var total = 0;
+        angular.forEach($scope.CheckingAccounts, function (item) {
+            total += item.Balance;
+        });
+
+        return total;
+    };
 }
 
 interface ICheckDetailsRouteParams extends ng.IRouteParamsService {
@@ -20,9 +30,9 @@ interface ICheckDetailsControllerScope extends ng.IScope {
     changeDescription: Function;
 }
 
-function CheckDetailsController($scope : ICheckDetailsControllerScope, CheckingAccount: ng.resource.IResourceClass, $routeParams : ICheckDetailsRouteParams) {
+function CheckDetailsController($scope: ICheckDetailsControllerScope, CheckingAccount: ng.resource.IResourceClass, $routeParams: ICheckDetailsRouteParams) {
 
-    $scope.CheckingAccount = <any>CheckingAccount.get({id: $routeParams.id});
+    $scope.CheckingAccount = <any>CheckingAccount.get({ id: $routeParams.id });
 
 
 
@@ -37,6 +47,6 @@ function CheckDetailsController($scope : ICheckDetailsControllerScope, CheckingA
 }
 
 
-function MyCtrl2($scope : ng.IScope) {
+function MyCtrl2($scope: ng.IScope) {
 
 }

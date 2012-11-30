@@ -1,7 +1,41 @@
-<p>This is the partial for view 1.</p>
-<ul data-ng-repeat="account in CheckingAccounts">
-    <li>
-        {{account.Description}} - {{account.Balance}}
-        <a href="#/checkingaccounts/{{account.id}}">test</a>
-    </li>
-</ul>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Balance
+            </th>
+        </tr>
+    </thead>
+    <tbody data-ng-repeat="account in CheckingAccounts">
+        <tr>
+            <td>
+                {{account.id}}
+            </td>
+            <td>
+                <a href="#/checkingaccounts/{{account.id}}">{{account.Description}}</a>
+            </td>
+            <td>
+                {{account.Balance | currency}}
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                
+            </td>
+            <td></td>
+            <td >
+                {{sum() | currency}}
+            </td> 
+        </tr>
+    </tfoot>
+</table>
+
+

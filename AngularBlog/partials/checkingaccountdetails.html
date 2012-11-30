@@ -1,7 +1,18 @@
-<p>This is the partial for view 1.</p>
-
-<p>
-    <input type="text" ng-model="CheckingAccount.Description"/>
-    <a href="#" ng-click="changeDescription($event)">Change Description</a>
-    {{CheckingAccount.Balance}}
-</p>
+<table>
+    <tr>
+        <td>
+            <label>Description</label>
+        </td>
+        <td>
+            <input type="text" ng-model="CheckingAccount.Description" />
+            <a href="#" ng-click="changeDescription($event)" class="btn btn-mini">Change Description</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Balance</label>
+        </td>
+        <td>{{CheckingAccount.Balance | currency}}
+        </td>
+    </tr>
+</table>
