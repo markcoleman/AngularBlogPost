@@ -8,7 +8,7 @@ interface ICheckingAccountControllerScope extends ng.IScope {
     sum: Function;
 }
 
-function MyCtrl1($scope: ICheckingAccountControllerScope, CheckingAccount: ng.resource.IResourceClass) {
+function BalancesController($scope: ICheckingAccountControllerScope, CheckingAccount: ng.resource.IResourceClass) {
     $scope.CheckingAccounts = <any>CheckingAccount.query();
 
     $scope.sum = function () {
@@ -46,7 +46,31 @@ function CheckDetailsController($scope: ICheckDetailsControllerScope, CheckingAc
 
 }
 
+interface ITransfersControllerScope extends ng.IScope {
+    Sources: CheckingAccount[];
+    Destinations: Function;
+    Amount: number;
+    SourceId: string;
+    DestinationId: number;
 
-function MyCtrl2($scope: ng.IScope) {
+    transferMoney : Function;
+}
 
+function TransfersController($scope: ITransfersControllerScope, CheckingAccount: ng.resource.IResourceClass, $http : ng.IHttpService) {
+    var accounts = <any>CheckingAccount.query();
+
+    $scope.Sources = accounts;
+    $scope.Destinations = accounts;
+
+    $scope.transferMoney = function (e) {
+        e.preventDefault();
+
+        var data = {
+            amount: $scope.Amount,
+            sourceId : $scope.SourceId,
+            destinationId : $scope.DestinationId
+        };
+
+        $http.post("api/PerformTransfer", data);
+    };
 }

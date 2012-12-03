@@ -1,2 +1,6 @@
-<p>This is the partial for view 2.</p>
-
+<select ng-model="SourceId" ng-options="s.Id as s.Description for s in Sources"></select>
+<br/>
+<select ng-model="DestinationId" ng-options="s.Id as s.Description for s in Destinations"></select>
+<br/>
+<input type="text" ng-model="Amount"/>
+<input type="button" value="Transfer" ng-click="transferMoney($event)"/>

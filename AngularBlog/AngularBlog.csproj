@@ -137,7 +137,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modules\ResourceModule.cs" />
+    <Compile Include="Modules\CheckingAccount.cs" />
+    <Compile Include="Modules\CheckingAccountsData.cs" />
+    <Compile Include="Modules\ICheckingAccountsData.cs" />
+    <Compile Include="Modules\BalancesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

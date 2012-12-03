@@ -1,4 +1,4 @@
-function MyCtrl1($scope, CheckingAccount) {
+function BalancesController($scope, CheckingAccount) {
     $scope.CheckingAccounts = CheckingAccount.query();
     $scope.sum = function () {
         var total = 0;
@@ -19,5 +19,17 @@ function CheckDetailsController($scope, CheckingAccount, $routeParams) {
         e.preventDefault();
     };
 }
-function MyCtrl2($scope) {
+function TransfersController($scope, CheckingAccount, $http) {
+    var accounts = CheckingAccount.query();
+    $scope.Sources = accounts;
+    $scope.Destinations = accounts;
+    $scope.transferMoney = function (e) {
+        e.preventDefault();
+        var data = {
+            amount: $scope.Amount,
+            sourceId: $scope.SourceId,
+            destinationId: $scope.DestinationId
+        };
+        $http.post("api/PerformTransfer", data);
+    };
 }

@@ -7,11 +7,11 @@ angular.module('myApp', [
     function ($routeProvider) {
         $routeProvider.when('/balances', {
             templateUrl: 'partials/balances.html',
-            controller: MyCtrl1
+            controller: BalancesController
         });
         $routeProvider.when('/transfers', {
             templateUrl: 'partials/transfers.html',
-            controller: MyCtrl2
+            controller: TransfersController
         });
         $routeProvider.when('/balances/detail/:id', {
             templateUrl: 'partials/details.html',
