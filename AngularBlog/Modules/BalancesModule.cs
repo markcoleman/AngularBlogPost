@@ -35,7 +35,7 @@ namespace AngularBlog.Modules
                     destination.RecentTransactions.Insert(0, new RecentTransaction
                         {
                             Amount = account.Amount,
-                            Comment = "Transfer from " + destination.Description,
+                            Comment = "Transfer from " + source.Description,
                             OccuredOn = DateTime.Now.ToString()
                         });
 
