@@ -4,7 +4,7 @@
 interface CheckingAccount extends ng.resource.IResource{
     Balance: number;
     Description: string;
-    id: string;
+    Id: string;
     $update: ng.resource.IActionCall;
 }
 

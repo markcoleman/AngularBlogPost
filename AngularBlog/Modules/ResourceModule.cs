@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using Nancy;
 using Nancy.ModelBinding;
+using Newtonsoft.Json;
 
 namespace AngularBlog.Modules
 {
+
     public class ResourceModule : NancyModule
     {
         private readonly ICheckingAccountsData _accountsData;
 
         public ResourceModule(ICheckingAccountsData accountsData) : base("/api")
         {
+            
             _accountsData = accountsData;
             Get["/CheckingAccounts"] = parameters => { return Response.AsJson(accountsData.GetAll()); };
 
@@ -85,9 +88,9 @@ namespace AngularBlog.Modules
             var r = new Random();
             Accounts = Enumerable.Range(0, 10).Select(i => new CheckingAccount
                 {
-                    id = i,
+                    Id = i,
                     Balance = r.Next(5, 100),
-                    Description = string.Format("Checking Account : {0}", i)
+                    Description = string.Format("Checking Account #{0}", i)
                 }).ToList();
         }
 
@@ -98,35 +101,36 @@ namespace AngularBlog.Modules
 
         public CheckingAccount Get(int id)
         {
-            return Accounts.FirstOrDefault(a => a.id == id);
+            return Accounts.FirstOrDefault(a => a.Id == id);
         }
 
         public void Update(CheckingAccount account)
         {
-            CheckingAccount checkingAccount = Accounts.Single(a => a.id == account.id);
+            CheckingAccount checkingAccount = Accounts.Single(a => a.Id == account.Id);
 
             checkingAccount.Description = account.Description;
         }
 
         public void Delete(int id)
         {
-            CheckingAccount checkingAccount = Accounts.Single(a => a.id == id);
+            CheckingAccount checkingAccount = Accounts.Single(a => a.Id == id);
             Accounts.Remove(checkingAccount);
         }
 
         public void Add(CheckingAccount account)
         {
-            int max = Accounts.Max(a => a.id);
-            account.id = max + 1;
+            int max = Accounts.Max(a => a.Id);
+            account.Id = max + 1;
             Accounts.Add(account);
         }
     }
 
     public class CheckingAccount
     {
+
         public string Description { get; set; }
         public int Balance { get; set; }
 
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

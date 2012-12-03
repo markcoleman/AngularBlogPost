@@ -15,10 +15,10 @@
     <tbody data-ng-repeat="account in CheckingAccounts">
         <tr>
             <td>
-                {{account.id}}
+                {{account.Id}}
             </td>
             <td>
-                <a href="#/checkingaccounts/{{account.id}}">{{account.Description}}</a>
+                <a href="#/checkingaccounts/{{account.Id}}">{{account.Description}}</a>
             </td>
             <td>
                 {{account.Balance | currency}}

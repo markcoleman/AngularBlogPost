@@ -38,7 +38,7 @@ function CheckDetailsController($scope: ICheckDetailsControllerScope, CheckingAc
 
     $scope.changeDescription = function (e) {
         $scope.CheckingAccount.$update({
-            id: $scope.CheckingAccount.id
+            id: $scope.CheckingAccount.Id
         });
         e.preventDefault();
     };
