@@ -118,9 +118,9 @@
     <Content Include="lib\angular\angular.min.js" />
     <Content Include="lib\angular\version.txt" />
     <Content Include="partials\.gitignore" />
-    <Content Include="partials\checkingaccountdetails.html" />
-    <Content Include="partials\partial1.html" />
-    <Content Include="partials\partial2.html" />
+    <Content Include="partials\details.html" />
+    <Content Include="partials\balances.html" />
+    <Content Include="partials\transfers.html" />
     <TypeScriptCompile Include="js\services.ts" />
     <Content Include="js\services.js">
       <DependentUpon>services.ts</DependentUpon>

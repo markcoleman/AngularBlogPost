@@ -6,15 +6,15 @@ angular.module('myApp', [
     '$routeProvider', 
     function ($routeProvider) {
         $routeProvider.when('/view1', {
-            templateUrl: 'partials/partial1.html',
+            templateUrl: 'partials/balances.html',
             controller: MyCtrl1
         });
         $routeProvider.when('/view2', {
-            templateUrl: 'partials/partial2.html',
+            templateUrl: 'partials/transfers.html',
             controller: MyCtrl2
         });
         $routeProvider.when('/checkingaccounts/:id', {
-            templateUrl: 'partials/checkingaccountdetails.html',
+            templateUrl: 'partials/details.html',
             controller: CheckDetailsController
         });
         $routeProvider.otherwise({
