@@ -5,19 +5,19 @@ angular.module('myApp', [
 ]).config([
     '$routeProvider', 
     function ($routeProvider) {
-        $routeProvider.when('/view1', {
+        $routeProvider.when('/balances', {
             templateUrl: 'partials/balances.html',
             controller: MyCtrl1
         });
-        $routeProvider.when('/view2', {
+        $routeProvider.when('/transfers', {
             templateUrl: 'partials/transfers.html',
             controller: MyCtrl2
         });
-        $routeProvider.when('/checkingaccounts/:id', {
+        $routeProvider.when('/balances/detail/:id', {
             templateUrl: 'partials/details.html',
             controller: CheckDetailsController
         });
         $routeProvider.otherwise({
-            redirectTo: '/view1'
+            redirectTo: '/balances'
         });
     }]);
