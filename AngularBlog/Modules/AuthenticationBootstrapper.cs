@@ -20,6 +20,7 @@ namespace AngularBlog.Modules
 
                     ctx.Request.Cookies.TryGetValue("valid", out cookie);
 
+                    //do something to populate the user identity
                     if (!string.IsNullOrEmpty(cookie))
                     {
                         ctx.CurrentUser = new DemoUserIdentity

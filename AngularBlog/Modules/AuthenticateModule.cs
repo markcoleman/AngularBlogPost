@@ -30,6 +30,8 @@ namespace AngularBlog.Modules
                         {
                             StatusCode = HttpStatusCode.OK
                         };
+
+                    //clear the cookie
                     response.AddCookie("valid", null, DateTime.Now.AddYears(-5));
                     return response;
                 };

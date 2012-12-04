@@ -20,9 +20,10 @@
         <span>{{Destination.Description}}</span><a href="#" ng-click="clearPick($event, 'destination')">Clear</a><span>{{Destination.Balance | currency}}</span>
 
     </div>
-    <br/>
+    <br />
     <div class="form-inline">
-        <input type="text" ng-model="Amount" placeholder="Amount" required/><br/><br/>
+        <input type="text" ng-model="Amount" placeholder="Amount" required /><br />
+        <br />
         <input type="button" value="Transfer" ng-click="transferMoney($event)" ng-disabled="(Destination == null)" class="btn btn-large" />
     </div>
 
