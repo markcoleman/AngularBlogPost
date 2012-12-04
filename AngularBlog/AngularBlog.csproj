@@ -77,7 +77,6 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\images\glyphicons-halflings-white.png" />
     <Content Include="css\images\glyphicons-halflings.png" />
-    <Content Include="index-async.html" />
     <Content Include="index.html" />
     <Content Include="js\app.js">
       <DependentUpon>app.ts</DependentUpon>
@@ -127,6 +126,7 @@
     </Content>
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
+    <Content Include="Scripts\bootstrap-2.1.d.ts" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
@@ -137,10 +137,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modules\CheckingAccount.cs" />
-    <Compile Include="Modules\CheckingAccountsData.cs" />
-    <Compile Include="Modules\ICheckingAccountsData.cs" />
+    <Compile Include="Models\ApiError.cs" />
+    <Compile Include="Models\RecentTransaction.cs" />
+    <Compile Include="Modules\AuthenticateModule.cs" />
+    <Compile Include="Modules\AuthenticationBootstrapper.cs" />
+    <Compile Include="Models\CheckingAccount.cs" />
+    <Compile Include="Data\CheckingAccountsData.cs" />
+    <Compile Include="Models\DemoUserIdentity.cs" />
+    <Compile Include="Data\ICheckingAccountsData.cs" />
     <Compile Include="Modules\BalancesModule.cs" />
+    <Compile Include="Models\LoginRequest.cs" />
+    <Compile Include="Models\TransferRequest.cs" />
+    <Compile Include="Modules\TransfersModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

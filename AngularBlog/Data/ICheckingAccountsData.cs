@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using AngularBlog.Models;
 
-namespace AngularBlog.Modules
+namespace AngularBlog.Data
 {
     public interface ICheckingAccountsData
     {

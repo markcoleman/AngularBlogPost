@@ -20,4 +20,24 @@ angular.module('myApp', [
         $routeProvider.otherwise({
             redirectTo: '/balances'
         });
-    }]);
+    }]).config(function ($httpProvider) {
+    function exampleInterceptor($q, $log) {
+        function success(response) {
+            return response;
+        }
+        function error(response) {
+            if(response.status === 401) {
+                var deferred = $q.defer();
+                $('#myModal').modal();
+                return deferred.promise;
+            }
+            return $q.reject(response);
+        }
+        return function (promise) {
+            return promise.then(success, error);
+        }
+    }
+    ; ;
+    $httpProvider.responseInterceptors.push(exampleInterceptor);
+});
+; ;

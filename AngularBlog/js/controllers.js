@@ -1,3 +1,19 @@
+function LoginController($scope, $http) {
+    $scope.login = function (e) {
+        var data = {
+            userName: $scope.userName,
+            password: $scope.password
+        };
+        $http.post("api/AuthenticateUser", data).success(function (result, status, headers) {
+            window.location.reload(true);
+        });
+    };
+    $scope.logOff = function (e) {
+        $http.get("api/LogOff").success(function (result, status, headers) {
+            window.location.reload(true);
+        });
+    };
+}
 function BalancesController($scope, CheckingAccount) {
     $scope.CheckingAccounts = CheckingAccount.query();
     $scope.sum = function () {

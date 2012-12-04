@@ -2,7 +2,28 @@
 /// <reference path="../lib/angular/angular-resource-1.0.d.ts" />
 /// <reference path="Models.ts" />
 
-
+interface ILoginControllerScope extends ng.IScope {
+    userName: string;
+    password: string;
+    login: Function;
+    logOff: Function;
+}
+function LoginController($scope: ILoginControllerScope, $http:ng.IHttpService) {
+    $scope.login = function (e) {
+        var data = {
+            userName: $scope.userName,
+            password: $scope.password
+        };
+        $http.post("api/AuthenticateUser", data).success(function (result, status, headers) {
+            window.location.reload(true);
+        });
+    };
+    $scope.logOff = function (e) {
+        $http.get("api/LogOff").success(function (result, status, headers) {
+            window.location.reload(true);
+        });
+    };
+}
 interface ICheckingAccountControllerScope extends ng.IScope {
     CheckingAccounts: CheckingAccount[];
     sum: Function;

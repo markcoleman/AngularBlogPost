@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AngularBlog.Models;
+using AngularBlog.Modules;
 
-namespace AngularBlog.Modules
+namespace AngularBlog.Data
 {
     public class CheckingAccountsData : ICheckingAccountsData
     {
