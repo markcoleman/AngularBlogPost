@@ -1,6 +1,29 @@
-<select ng-model="SourceId" ng-options="s.Id as s.Description for s in Sources"></select>
-<br/>
-<select ng-model="DestinationId" ng-options="s.Id as s.Description for s in Destinations"></select>
-<br/>
-<input type="text" ng-model="Amount"/>
-<input type="button" value="Transfer" ng-click="transferMoney($event)"/>
+<div id="transers">
+    <h4>Source</h4>
+    <ul ng-repeat="source in Sources" ng-show="Source == null" class="unstyled">
+        <li ng-click="pickSource($event, source)"><span>{{source.Description}}</span><span>{{source.Balance | currency}}</span>
+        </li>
+    </ul>
+    <div ng-show="Source" class="picked">
+        <span>{{Source.Description}}</span><a href="#" ng-click="clearPick($event, 'source')">Clear</a><span>{{Source.Balance | currency}}</span>
+
+    </div>
+
+    <h4 ng-show="Destination || Source != null">Destination</h4>
+    <ul ng-repeat="destination in Destinations()" ng-show="Source != null && Destination == null" class="unstyled">
+        <li ng-click="pickDestination($event, destination)">{{destination.Description}}
+            <span>{{destination.Balance | currency}}</span>
+        </li>
+    </ul>
+
+    <div ng-show="Destination" class="picked">
+        <span>{{Destination.Description}}</span><a href="#" ng-click="clearPick($event, 'destination')">Clear</a><span>{{Destination.Balance | currency}}</span>
+
+    </div>
+    <br/>
+    <div class="form-inline">
+        <input type="text" ng-model="Amount" placeholder="Amount" required/><br/><br/>
+        <input type="button" value="Transfer" ng-click="transferMoney($event)" ng-disabled="(Destination == null)" class="btn btn-large" />
+    </div>
+
+</div>

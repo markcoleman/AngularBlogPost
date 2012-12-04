@@ -22,14 +22,42 @@ function CheckDetailsController($scope, CheckingAccount, $routeParams) {
 function TransfersController($scope, CheckingAccount, $http) {
     var accounts = CheckingAccount.query();
     $scope.Sources = accounts;
-    $scope.Destinations = accounts;
+    $scope.Destinations = function () {
+        return $scope.Sources.filter(function (s, index) {
+            if($scope.Source) {
+                return s.Id !== $scope.Source.Id;
+            } else {
+                return false;
+            }
+        });
+    };
+    $scope.pickSource = function (e, account) {
+        $scope.Source = account;
+    };
+    $scope.pickDestination = function (e, account) {
+        $scope.Destination = account;
+    };
+    $scope.clearPick = function (e, option) {
+        e.preventDefault();
+        if(option === 'destination') {
+            $scope.Destination = null;
+        }
+        if(option === 'source') {
+            $scope.Source = null;
+            $scope.Destination = null;
+        }
+    };
     $scope.transferMoney = function (e) {
         e.preventDefault();
         var data = {
             amount: $scope.Amount,
-            sourceId: $scope.SourceId,
-            destinationId: $scope.DestinationId
+            sourceId: $scope.Source.Id,
+            destinationId: $scope.Destination.Id
         };
-        $http.post("api/PerformTransfer", data);
+        $http.post("api/PerformTransfer", data).error(function (result, status, headers) {
+            if(result.ErrorCode === 1234) {
+                alert(result.ErrorMessage);
+            }
+        });
     };
 }

@@ -14,7 +14,7 @@ namespace AngularBlog.Modules
             Accounts = Enumerable.Range(0, 10).Select(i => new CheckingAccount
                 {
                     Id = i,
-                    Balance = r.Next(5, 100),
+                    Balance = r.Next(5, 1000),
                     Description = string.Format("Checking Account #{0}", i),
                     RecentTransactions = GetRecentTransactions(i)
                 }).ToList();

@@ -4,6 +4,13 @@ using Nancy.ModelBinding;
 
 namespace AngularBlog.Modules
 {
+    public class ApiError
+    {
+        public string ErrorMessage { get; set; }
+        public int ErrorCode { get; set; }
+        public string ErrorName { get; set; }
+    }
+
     public class TransfersModule : NancyModule
     {
         private readonly ICheckingAccountsData _accountsData;
@@ -14,14 +21,24 @@ namespace AngularBlog.Modules
 
             Post["/PerformTransfer"] = parameters =>
                 {
+
                     var account = this.Bind<TransferRequest>();
 
                     CheckingAccount source = _accountsData.Get(account.SourceId);
                     CheckingAccount destination = _accountsData.Get(account.DestinationId);
 
+                    if (source.Balance < account.Amount)
+                    {
+                        return Response.AsJson(new ApiError
+                            {
+                                ErrorMessage = "Not enough money from source share.",
+                                ErrorCode = 1234,
+                                ErrorName = "not_enough_money"
+                            }, HttpStatusCode.BadRequest);
+                    }
+
+
                     source.Balance -= account.Amount;
-
-
                     destination.Balance += account.Amount;
 
                     source.RecentTransactions.Insert(0, new RecentTransaction
