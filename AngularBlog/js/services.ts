@@ -1,4 +1,4 @@
-/// <reference path="../lib/angular/angular-1.0.d.ts" />
+﻿/// <reference path="../lib/angular/angular-1.0.d.ts" />
 /// <reference path="../lib/angular/angular-resource-1.0.d.ts" />
 /// <reference path="models.ts" />
 
@@ -16,16 +16,10 @@ angular.module('myApp.services', ['ngResource'])
             isArray: true
         };
 
-        var putDes: ng.resource.IActionDescriptor;
-
-        putDes = {
-            method : 'PUT',
-            
-        };
-
         var share = <checkingAccountResource> $resource('api/checkingaccounts/:id', {}, {
             query : queryDescriptor
 
         });
         return share;
     });
+

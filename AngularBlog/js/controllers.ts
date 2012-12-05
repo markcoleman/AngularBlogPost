@@ -48,23 +48,19 @@ interface ICheckDetailsRouteParams extends ng.IRouteParamsService {
 
 interface ICheckDetailsControllerScope extends ng.IScope {
     CheckingAccount: CheckingAccount;
-    changeDescription: Function;
+    changeDescription(e: Event);
 }
 
 function CheckDetailsController($scope: ICheckDetailsControllerScope, CheckingAccount: ng.resource.IResourceClass, $routeParams: ICheckDetailsRouteParams) {
 
     $scope.CheckingAccount = <any>CheckingAccount.get({ id: $routeParams.id });
-
-
-
+    
     $scope.changeDescription = function (e) {
         $scope.CheckingAccount.$update({
             id: $scope.CheckingAccount.Id
         });
         e.preventDefault();
     };
-
-
 }
 
 interface ITransfersControllerScope extends ng.IScope {
