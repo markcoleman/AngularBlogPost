@@ -125,6 +125,7 @@
       <DependentUpon>services.ts</DependentUpon>
     </Content>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Dev.pubxml" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\bootstrap-2.1.d.ts" />
     <Content Include="Scripts\bootstrap.js" />
@@ -190,7 +191,7 @@
   </ProjectExtensions>
   <Target Name="BeforeBuild">
     <Message Text="Compiling TypeScript files" />
-    <Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.1.0\tsc&quot; -target ES5 @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+    <Exec Command="&quot;$(PROGRAMFILES)\Microsoft SDKs\TypeScript\0.8.1.1\tsc&quot; -target ES5 @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
   </Target>
   <Target Name="AfterBuild">
   </Target>

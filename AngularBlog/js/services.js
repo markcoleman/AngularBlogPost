@@ -9,10 +9,6 @@ angular.module('myApp.services', [
         },
         isArray: true
     };
-    var putDes;
-    putDes = {
-        method: 'PUT'
-    };
     var share = $resource('api/checkingaccounts/:id', {
     }, {
         query: queryDescriptor
